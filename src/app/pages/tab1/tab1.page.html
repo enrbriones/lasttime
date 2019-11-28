@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color='dark'>
+    <ion-title>
+      Mis Acciones
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+
+  <div *ngFor="let accion of aerrAcciones">
+    <app-accion 
+    (accionSeleccionada)="eliminarAccion($event)"
+    (accionEditar)="editarFecha($event)"
+     [accion]="accion"></app-accion>
+  </div>
+
+
+  <ion-row>
+    <ion-col size="12" [ngStyle]="{height: '80px'}"></ion-col>
+  </ion-row>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button color='tertiary' (click)='abrirModal()'>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+</ion-content>

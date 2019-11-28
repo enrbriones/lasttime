@@ -1,0 +1,37 @@
+<ion-card color={{accion.color}}>
+
+  <ion-card-header>
+    
+    <ion-card-title>{{accion.titulo |uppercase}} - {{accion.ultimaMsg}} </ion-card-title>
+    <ion-card-subtitle>{{accion.fecha|date:'medium'}}</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="editarFecha(fechaActual())" fill='outline' color='light'>Lo acabo de hacer!</ion-button>
+    </ion-col>
+
+    <ion-col>
+      <ion-datetime
+      [ngModel]="fechaCreacion"
+      #datePicker style="display:none"
+      display-format="DD MMMM YYYY - HH:mm"
+      cancelText='Cancelar' doneText='Hecho'
+       (ionChange)="cambiarFecha($event)">
+      </ion-datetime>
+      <ion-button fill='clear' color='light' (click)="abrirFecha()">
+ 
+       
+        <ion-icon slot="icon-only" name="calendar"></ion-icon>
+      </ion-button>
+
+
+      <ion-button float-right fill='clear' color='light' (click)="alertaEliminar()">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-col>
+
+  </ion-row>
+
+
+</ion-card>

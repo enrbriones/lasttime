@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color='dark'>
+    <ion-title>Agregar nueva acción...</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color='dark'>
+
+  <form novalidate [formGroup]="formulario" (ngSubmit)="prevalidarFormulario()">
+    <!-- Inputs Formulario -->
+  
+    <ion-item color='dark'>
+      <ion-label position="floating" color='warning'>Acción</ion-label>
+      <!-- <ion-input [(ngModel)]="tituloAccion"></ion-input> -->
+      <ion-input formControlName="titulo"></ion-input>
+    </ion-item>
+      <ion-label color='danger' *ngIf="formulario.get('titulo').hasError('required') && formulario.get('titulo').touched">Campo obligatorio</ion-label>
+ 
+  
+    <ion-item color='dark'>
+      <ion-label>Última vez realizada</ion-label>
+      <ion-datetime 
+      [(ngModel)]="fechaCreacion"
+      formControlName="fecha"
+       display-format="DD MMMM YYYY - HH:mm"
+        cancelText='Cancelar' doneText='Hecho'></ion-datetime>
+    </ion-item>
+  
+    <ion-row>
+      <ion-col size='7'>
+        <ion-item color='dark'>
+          <ion-label>Lo suelo hacer cada: </ion-label>
+          <ion-input text-right type="number" placeholder="0" [(ngModel)]="valorLapso" formControlName="lapsovalue"></ion-input>
+        </ion-item>
+        <ion-label color='danger' *ngIf="formulario.get('lapsovalue').hasError('required') && formulario.get('lapsovalue').touched">Campo Obligatorio</ion-label>
+        <ion-label color='danger' *ngIf="formulario.get('lapsovalue').hasError('pattern') && formulario.get('lapsovalue').touched">Sólo números enteros mayores a cero</ion-label>
+      </ion-col>
+  
+      <ion-col size='5'>
+        <ion-button color='light' fill='outline' expand='block' (click)="presentAlertRadio()">
+          {{lapso}}
+        </ion-button>
+      </ion-col>
+  
+    </ion-row>
+  
+  
+  <!-- Crear o Cancelar -->
+    <ion-row>
+      <ion-col size="6">
+        <ion-button color='light' fill='clear' expand='block' (click)="cancelar()">
+          Cancelar
+        </ion-button>
+      </ion-col>
+  
+      <ion-col size="6">
+        <ion-button type="submit" expand='block'>Crear</ion-button>
+      </ion-col>
+  
+    </ion-row>
+  </form>
+
+
+</ion-content>

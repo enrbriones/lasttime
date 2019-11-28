@@ -1,5 +1,7 @@
 {
   "name": "lasttime",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
