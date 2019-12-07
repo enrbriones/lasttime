@@ -10,12 +10,10 @@
     <!-- Inputs Formulario -->
   
     <ion-item color='dark'>
-      <ion-label position="floating" color='warning'>Acción</ion-label>
-      <!-- <ion-input [(ngModel)]="tituloAccion"></ion-input> -->
+      <ion-label position="floating" color='warning'>Acción: (Ej. Salir a tomar helado)</ion-label>
       <ion-input formControlName="titulo"></ion-input>
     </ion-item>
       <ion-label color='danger' *ngIf="formulario.get('titulo').hasError('required') && formulario.get('titulo').touched">Campo obligatorio</ion-label>
- 
   
     <ion-item color='dark'>
       <ion-label>Última vez realizada</ion-label>

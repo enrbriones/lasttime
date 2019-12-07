@@ -11,14 +11,19 @@ import { AccionesService } from '../../services/acciones.service';
 })
 export class Tab1Page {
 
-  aerrAcciones:Accion[]=[];
+  arrAcciones:Accion[]=[];
+
+  sliderOpts={
+    allowSlidePrev:false,
+    allowSlideNext:false
+  }
 
 
   constructor(
     public accionesService:AccionesService,
     private modalCtrl: ModalController) {
 
-      this.aerrAcciones=accionesService.updateElapsedTimeAcciones();
+      this.arrAcciones=accionesService.updateElapsedTimeAcciones();
      }
 
   async abrirModal() {
@@ -28,18 +33,25 @@ export class Tab1Page {
 
       }
     });
-    modal.onDidDismiss().then(()=>this.aerrAcciones=this.accionesService.updateElapsedTimeAcciones());
+    modal.onDidDismiss().then(()=>this.arrAcciones=this.accionesService.updateElapsedTimeAcciones());
     await modal.present();
   }
 
   editarFecha(accion:Accion){
     this.accionesService.editarFecha(accion);
-    this.aerrAcciones=this.accionesService.updateElapsedTimeAcciones();
+    this.arrAcciones=this.accionesService.updateElapsedTimeAcciones();
   }
 
   eliminarAccion(id:number){
     this.accionesService.borrarAccion(id);
-    this.aerrAcciones=this.accionesService.updateElapsedTimeAcciones();
+    this.arrAcciones=this.accionesService.updateElapsedTimeAcciones();
+  }
+
+  doRefresh(event){
+    setTimeout(() => {
+      this.arrAcciones=this.accionesService.updateElapsedTimeAcciones();
+      event.target.complete();
+    }, 500);
   }
 
 

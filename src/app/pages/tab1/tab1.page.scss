@@ -2,3 +2,21 @@
   max-height: 35vh;
   overflow: hidden;
 }
+
+ion-slides,
+ion-slide {
+  width: 90%;
+  height: 100%;
+}
+
+ion-refresher ion-refresher-content {
+  --color: #fff !important;
+
+  .refresher-pulling-text,
+  .refresher-refreshing-text,
+  .refresher-refreshing-icon,
+  .refresher-pulling-icon {
+    color: #fff !important;
+  }
+
+}

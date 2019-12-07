@@ -39,7 +39,6 @@ export class AgregarPage implements OnInit {
   }
 
   prevalidarFormulario(){
-    console.log('hola');
     console.log(this.formulario);
     this.formulario.get('titulo').markAsTouched({onlySelf:true});
     this.formulario.get('lapsovalue').markAsTouched({onlySelf:true});
