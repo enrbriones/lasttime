@@ -14,7 +14,7 @@ export class AccionComponent implements OnInit {
   @Output() accionSeleccionada:EventEmitter<number>;
   @Output() accionEditar:EventEmitter<Accion>;
 
-  @ViewChild('datePicker',{static: false}) datePicker:any;
+  @ViewChild('datePicker') datePicker:any;
 
   fechaCreacion: String = new Date().toISOString();
   //fechaCreacion:String;
