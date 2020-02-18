@@ -3,8 +3,8 @@
 
 # Qué NO es Last Time?
 
-No es una agenda.
-No tiene alertas recordatorias (aunque en un futuro puede que sí).
+* No es una agenda.
+* No tiene alertas recordatorias (aunque en un futuro puede que sí).
 
 # Entonces ¿Qué es?
 
