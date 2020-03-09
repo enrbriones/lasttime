@@ -8,7 +8,6 @@
 
   <form novalidate [formGroup]="formulario" (ngSubmit)="prevalidarFormulario()">
     <!-- Inputs Formulario -->
-  
     <ion-item color='dark'>
       <ion-label position="floating" color='warning'>Acción: (Ej. Salir a tomar helado)</ion-label>
       <ion-input formControlName="titulo"></ion-input>
@@ -18,7 +17,6 @@
     <ion-item color='dark'>
       <ion-label>Última vez realizada</ion-label>
       <ion-datetime 
-      [(ngModel)]="fechaCreacion"
       formControlName="fecha"
        display-format="DD MMMM YYYY - HH:mm"
         cancelText='Cancelar' doneText='Hecho'></ion-datetime>
@@ -28,7 +26,9 @@
       <ion-col size='7'>
         <ion-item color='dark'>
           <ion-label>Lo suelo hacer cada: </ion-label>
-          <ion-input text-right type="number" placeholder="0" [(ngModel)]="valorLapso" formControlName="lapsovalue"></ion-input>
+          <ion-input class="ion-text-right" type="number" placeholder="0"
+         
+            formControlName="lapsovalue"></ion-input>
         </ion-item>
         <ion-label color='danger' *ngIf="formulario.get('lapsovalue').hasError('required') && formulario.get('lapsovalue').touched">Campo Obligatorio</ion-label>
         <ion-label color='danger' *ngIf="formulario.get('lapsovalue').hasError('pattern') && formulario.get('lapsovalue').touched">Sólo números enteros mayores a cero</ion-label>

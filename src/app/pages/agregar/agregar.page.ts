@@ -13,13 +13,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AgregarPage implements OnInit {
 
 
-  tituloAccion: String = '';
-  fechaCreacion: String = new Date().toISOString();
-  lapso: String = 'dia';
+  tituloAccion = '';
+  fechaCreacion: string = new Date().toISOString();
+  lapso = 'dia';
   valorLapso: number;
-
-
-
   formulario: FormGroup;
 
   constructor(
@@ -30,29 +27,28 @@ export class AgregarPage implements OnInit {
   ngOnInit() {
 
     this.formulario = new FormGroup({
-      'titulo': new FormControl(this.tituloAccion,[Validators.required]),
-      'fecha': new FormControl(this.fechaCreacion),
-      'lapso': new FormControl(this.lapso),
-      'lapsovalue': new FormControl(this.valorLapso,[Validators.required, Validators.pattern(/^[1-9]\d*$/)])
-    })
-
+      titulo: new FormControl(this.tituloAccion, [Validators.required]),
+      fecha: new FormControl(this.fechaCreacion),
+      lapso: new FormControl(this.lapso),
+      lapsovalue: new FormControl(this.valorLapso, [Validators.required, Validators.pattern(/^[1-9]\d*$/)])
+    });
   }
 
-  prevalidarFormulario(){
-    console.log(this.formulario);
-    this.formulario.get('titulo').markAsTouched({onlySelf:true});
-    this.formulario.get('lapsovalue').markAsTouched({onlySelf:true});
+  prevalidarFormulario() {
+    // console.log(this.formulario);
+    this.formulario.get('titulo').markAsTouched({ onlySelf: true });
+    this.formulario.get('lapsovalue').markAsTouched({ onlySelf: true });
 
-    if(this.formulario.valid){
+    if (this.formulario.valid) {
       this.agregarAccion();
-    }else{
+    } else {
       return;
     }
   }
 
 
   agregarAccion() {
-    let newAccion: Accion = {
+    const newAccion: Accion = {
       titulo: this.formulario.get('titulo').value,
       ultimaMsg: '',
       fecha: new Date(this.fechaCreacion.toString()),
@@ -62,7 +58,7 @@ export class AgregarPage implements OnInit {
       icono: 'sdjfsdf',
       color: 'success',
       id: new Date().getTime()
-    }
+    };
     // console.log('fecha seteada:', newAccion.fecha);
     // console.log('fecha next:', newAccion.next);
     this.service.crearAccion(newAccion);
@@ -77,7 +73,7 @@ export class AgregarPage implements OnInit {
     this.cerrarModal();
   }
 
-  comprobarChecked(value: String) {
+  comprobarChecked(value: string) {
     return value === this.lapso;
   }
 
@@ -134,7 +130,6 @@ export class AgregarPage implements OnInit {
         }
       ]
     });
-
     await alert.present();
   }
 
