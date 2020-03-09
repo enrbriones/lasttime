@@ -1,9 +1,13 @@
 
 ![App Screenshot](https://github.com/enrbriones/lasttime/blob/master/images/lasttime-screenshot-1.JPG)
 
-# Ejecutar Proyecto
+## Instalar Ionic
 
-`npm install -g @ionic/cli`
+`npm i -g @ionic/cli`
+
+## Ejecutar Proyecto
+
+`npm install`
 
 `ionic serve -o`
 
