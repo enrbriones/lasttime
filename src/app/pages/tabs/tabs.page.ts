@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
@@ -10,16 +12,19 @@ import { Subscription } from 'rxjs';
 export class TabsPage {
   subscription = new Subscription();
 
-  constructor(private platform:Platform) {}
+  constructor(
+    private platform: Platform,
+    private screenOrientation: ScreenOrientation) { }
 
-  ionViewDidEnter(){ 
-    this.subscription = this.platform.backButton.subscribe(()=>{
-       navigator['app'].exitApp(); 
-      }); 
-  } 
-  
-  ionViewWillLeave(){ 
-    this.subscription.unsubscribe(); 
+  ionViewDidEnter() {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+    this.subscription = this.platform.backButton.subscribe(() => {
+      navigator['app'].exitApp();
+    });
+  }
+
+  ionViewWillLeave() {
+    this.subscription.unsubscribe();
   }
 
 }
